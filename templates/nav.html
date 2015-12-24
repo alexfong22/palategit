@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <title>Palate.io | Discover Your Palate</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+        function process() {
+            var url = "https://sl-alexanderfong22.c9.io/search/" + document.getElementById("url").value;
+            location.href = url;
+            return false;
+        }
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,100,400' rel='stylesheet' type='text/css'>
+    <style>
+        img{
+            border-style:none;
+        }
+        #viz{
+            font-weight:100;
+        }
+        form{
+            float:right;
+        }
+        .triangle-down-left {
+            width: 5%;
+            height: 0;
+            padding-bottom: 5%;
+            overflow: hidden;
+            position: absolute;
+            margin-left: 49%;
+            bottom: 0px;
+        }
+        
+        .triangle-down-left:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-right: 500px solid transparent;
+            border-bottom: 500px solid #498450;
+        }
+        
+        #color {
+            height: 100%;
+            width: 50%;
+            background-color: #498450;
+            position: absolute;
+            text-align:left;
+            color: white;
+            font-size: 6.5vw;
+            margin-bottom:0px;
+        }
+        
+        #container {
+            background-color: white;
+            margin-left: -8px;
+            padding-right: 16px;
+            text-align: right;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            min-height:7vw;
+        }
+        
+        span {
+            text-align: right;
+        }
+        
+        #name {
+            font-size: 5vw;
+            background-color: #3F607B;
+            text-align: right;
+            margin-left: -8px;
+            margin-right: -8px;
+            color: white;
+            z-index: 100;
+            margin-top:0px;
+        }
+        
+        table {
+            font-size: 1.3vw;
+        }
+        
+        body {
+            font-weight: 300;
+            font-family: Lato;
+        }
+        
+        #logos {
+            background-color: white;
+            width: 20%;
+            padding: 1.9%;
+            vertical-align: middle;
+            text-align: right;
+        }
+        
+        a {
+            color: #FF7400;
+        }
+        
+        p {
+            color: black;
+            font-size: 8vw;
+            float:left;
+            margin-top:-5%;
+            margin-bottom:-5%;
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'> </head>
+
+<body style="background-color:#dddddd">
+    <form onSubmit="return process();">
+                &nbsp;&nbsp;&nbsp;&nbsp;Symbol&nbsp;&nbsp;&nbsp;&nbsp;<input style="text-transform:uppercase" type="text" name="url" id="url"> <input type="submit" value="go">
+    </form>
+    <div id='container'>
+        <div id='color'><span id='viz'>Palate</span>.io</div>
+        <div id='tricontainer'>
+            <div class="triangle-down-left"></div>
+        </div>
+        <div><img id='logos' src='{{logo}}' /></div>
+    </div>
+    <div id="name"> <span></span> </div>
+    <hr>
+    <table>
+        {% for rec in recs %}
+        <tr>
+            <td>
+                {{ ratings[recs.index(rec)] }}
+            </td>
+                
+            <td>
+                {{ rec }}
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
