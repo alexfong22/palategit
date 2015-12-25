@@ -5,7 +5,6 @@ from flask import request, redirect
 from rcbl import recommend
 import re
 from Numb import numb
-from werkzeug.contrib.fixers import ProxyFix
 app = Flask(__name__)
 @app.route('/go')
 def my_form():
@@ -126,7 +125,7 @@ def recommendgo():
             ratings = llll[1],
             )
             
-app.wsgi_app = ProxyFix(app.wsgi_app)
+
 if __name__ == '__main__':
     app.debug = False
     app.run(0.0.0.0)
